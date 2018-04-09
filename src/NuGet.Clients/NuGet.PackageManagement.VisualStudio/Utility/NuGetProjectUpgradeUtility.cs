@@ -56,6 +56,11 @@ namespace NuGet.PackageManagement.VisualStudio
                 }
             }
 
+            if (!nuGetProject.ProjectServices.Capabilities.SupportsPackageReferences)
+            {
+                return false;
+            }
+
             var msBuildNuGetProject = nuGetProject as MSBuildNuGetProject;
             if (msBuildNuGetProject == null || !msBuildNuGetProject.PackagesConfigNuGetProject.PackagesConfigExists())
             {
